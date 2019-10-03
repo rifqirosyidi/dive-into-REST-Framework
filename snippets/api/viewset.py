@@ -4,6 +4,10 @@ from snippets.api.serializers import SnippetSerializer
 from rest_framework import viewsets
 from rest_framework.decorators import action
 
+# Auth in viewset
+# from rest_framework.authentication import TokenAuthentication
+# from rest_framework.permissions import IsAuthenticated
+
 
 # class SnippetViewSet(viewsets.ViewSet):
 #
@@ -16,9 +20,13 @@ from rest_framework.decorators import action
 class SnippetViewSet(viewsets.ModelViewSet):
 
     # List, Retrieve, Update, Delete
-
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
+
+    # # Authentication in Viewset Base
+    # authentication_classes = (TokenAuthentication,)
+    # permission_classes = (IsAuthenticated,)
+
 
     # Custom Urls
     @action(methods=['GET'], detail=False)
